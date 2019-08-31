@@ -21,12 +21,35 @@ module.exports = {
       })
   },
   postUserScore: (req, res) => {
-    console.log(req.body);
-    res.send('hey we got the store');
+    let { username, score } = req.body;
+    user.findOneAndUpdate({username: username}, {score: score}, (err, response) => {
+      if (err) {
+        return err;
+      } else {
+        res.send(response);
+      }
+    });
   },
   postNewUser: (req, res) => {
     const { username, password } = req.body;
-    user.save(username, password)
+    console.log(req.body);
+    let doesExist = user.findOne({username: username});
+    console.log(doesExist);
+      new user({
+        username: username,
+        password: password,
+        totalScore: 0
+      })
+      .save()
+      .then(() => {
+        res.status(200).send('created user');
+      })
+      .catch((err) => {
+        res.status(400).send(err);
+      })
+    //check if username already exists
+      //if exists tell them to login
+      //else save username
     
   }
 };
