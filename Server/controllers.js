@@ -32,24 +32,27 @@ module.exports = {
   },
   postNewUser: (req, res) => {
     const { username, password } = req.body;
-    console.log(req.body);
-    let doesExist = user.findOne({username: username});
-    console.log(doesExist);
-      new user({
-        username: username,
-        password: password,
-        totalScore: 0
-      })
-      .save()
-      .then(() => {
-        res.status(200).send('created user');
+    user.exists({username: username})
+      .then((doc) => {
+        if (!!doc === false) {
+          new user({
+            username: username,
+            password: password,
+            totalScore: 0
+          })
+          .save()
+          .then(() => {
+            res.status(200).send('created user');
+          })
+          .catch((err) => {
+            res.status(500).send(err);
+          })
+        } else {
+          res.status(302).send('user exists');
+        }
       })
       .catch((err) => {
-        res.status(400).send(err);
-      })
-    //check if username already exists
-      //if exists tell them to login
-      //else save username
-    
+        res.status(500).send(err);
+      });
   }
 };
