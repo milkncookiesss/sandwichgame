@@ -1,4 +1,6 @@
 const { user } = require('../Database/models.js');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 //export controllers
 module.exports = {
   getUserScore: (req, res) => {
@@ -32,12 +34,13 @@ module.exports = {
   },
   postNewUser: (req, res) => {
     const { username, password } = req.body;
+    let passwordHash = bcrypt.hashSync(password, saltRounds);
     user.exists({username: username})
       .then((doc) => {
         if (!!doc === false) {
           new user({
             username: username,
-            password: password,
+            password: passwordHash,
             totalScore: 0
           })
           .save()
