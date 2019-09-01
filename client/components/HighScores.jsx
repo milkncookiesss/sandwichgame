@@ -9,9 +9,15 @@ class HighScores extends React.Component {
       highscores: []
     }
   }
-  
+
   componentDidMount() {
-    axios.get('/api')
+    clearInterval(this.interval());
+  }
+
+
+  interval = () => {
+    setInterval(() => {
+      axios.get('/api')
     .then((res) => {
       this.setState({
         highscores: res.data
@@ -20,24 +26,10 @@ class HighScores extends React.Component {
     .catch((err) => {
       console.error(err);
     })
-  }
-
-  interval = () => {
-    setInterval(() => {
-      axios.get('/api')
-      .then((res) => {
-        this.setState({
-          highscores: res.data
-        })
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-    }, 10000)
+    }, 5000)
   }
 
   render() {
-    clearInterval(this.interval());
     return(
       <div>
         {this.state.highscores.map((score, index) => {
