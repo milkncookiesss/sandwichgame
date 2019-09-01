@@ -1,4 +1,5 @@
 import HighScores from "./HighScores.jsx";
+import Sandwich from "./SandwichComponent.jsx";
 import React from "react";
 import axios from "axios";
 
@@ -23,17 +24,21 @@ class Game extends React.Component {
     })
   }
 
+  pressSandwich = () => {
+
+  }
+
   render() {
     return (
       <div>
-        <h1>
-          Game Here
-        </h1>
         <div>
           {this.state.score}
         </div>
         <div>
           <HighScores />
+        </div>
+        <div>
+          <Sandwich />
         </div>
       </div>
     )
