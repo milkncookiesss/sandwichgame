@@ -6,9 +6,11 @@ const saltRounds = 10;
 module.exports = {
   //get user's score
   getUserScore: (req, res) => {
-    let { username } = req.body;
-    user.find({username: username})
+    let { username } = req.query;
+    // console.log('the user ', req.query);
+    user.findOne({username: username})
       .then((response) => {
+        console.log(response);
         res.status(200).send(response);
       })
       .catch((err) => {
@@ -19,6 +21,7 @@ module.exports = {
   getAllScores: (req, res) => {
     user.find().limit(10).sort({totalScore: -1})
       .then((response) => {
+        console.log(response);
         res.status(200).send(response);
       })
       .catch((err) => {

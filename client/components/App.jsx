@@ -15,17 +15,14 @@ class App extends React.Component {
   onSubmit = (e) => {
     e.preventDefault();
     axios.post('/api/login', {
-      username: this.state.username,
-      password: this.state.password
-    })
+        username: this.state.username,
+        password: this.state.password
+      }
+    )
     .then((res) => {
       this.setState({
         isLoggedIn: res.data
       });
-    })
-    this.setState({
-      username: '',
-      password: ''
     })
     console.log(this.state);
   }
@@ -35,7 +32,6 @@ class App extends React.Component {
       [e.target.name]: e.target.value
     })
     e.preventDefault();
-    // console.log(this.state)
   }
 
   loginRender = () => {
@@ -47,7 +43,7 @@ class App extends React.Component {
   render() {
     let loggedin = this.state.isLoggedIn;
     if (loggedin === true) {
-      return <Game />
+      return <Game username={this.state.username}/>
     } else {
       return (
       <div>
@@ -59,7 +55,7 @@ class App extends React.Component {
           <br />
           <label>
             password:
-            <input type="password" name="password" type="text" value={this.state.password} onChange={this.handleChange} />
+            <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
           </label>
           <button onClick={(e) => this.onSubmit(e)}>click this</button>
         </form>
