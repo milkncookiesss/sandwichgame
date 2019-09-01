@@ -1,8 +1,11 @@
 import axios from "axios";
 import React from "react";
 import Game from "./Game.jsx";
+import Col from "react-bootstrap/Col"
+import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Jumbotron from "react-bootstrap/Jumbotron"
 import Container from "react-bootstrap/Container";
 
 class App extends React.Component {
@@ -46,7 +49,19 @@ class App extends React.Component {
       return <Register />
     } else {
       return (
-        <Container className="d-flex justify-content-center">
+        <div>
+            <Jumbotron>
+              <Row>
+                <Col xs>
+              <h1>
+              Sandwich Gamez
+              </h1>
+                </Col>
+              </Row>
+            </Jumbotron>
+          <ul>
+          <Col className="col-md-4 col-md-offset-4">
+        <Container className="d-flex justify-content-center my-auto align-middle">
           <Form>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>
@@ -64,6 +79,16 @@ class App extends React.Component {
             <Button variant="primary"  onSubmit={(e) => this.onSubmit(e)} onClick={(e) => this.onSubmit(e)}>click this</Button>
           </Form>
         </Container>
+          </Col>
+          </ul>
+        {/* // <Container className="d-flex justify-content-center align-middle my-auto">
+        //   <Row>
+        //       <Col md="auto">
+        //       hi hi hi
+        //       </Col>
+        //   </Row>
+        // </Container> */}
+      </div>
       )
     }
   }
