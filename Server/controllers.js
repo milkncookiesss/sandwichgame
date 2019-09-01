@@ -30,7 +30,8 @@ module.exports = {
   },
   //update user's score
   postUserScore: (req, res) => {
-    let { username, score } = req.body;
+    let { username, score } = req.body.params;
+    console.log('the stuff ', req);
     user.findOneAndUpdate({username: username}, {totalScore: score}, (err, response) => {
       if (err) {
         return err;

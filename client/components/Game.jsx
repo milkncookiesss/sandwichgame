@@ -25,7 +25,20 @@ class Game extends React.Component {
   }
 
   pressSandwich = () => {
-
+    // this.setState({
+    //   score: this.state.score + 10
+    // })
+    axios.post('/api/user', {
+      params: {
+        username: this.state.userName,
+        score: this.state.score + 10
+      }
+    })
+    .then((res) => {
+      this.setState({
+        score: res.data.totalScore
+      })
+    })
   }
 
   render() {
@@ -38,7 +51,9 @@ class Game extends React.Component {
           <HighScores />
         </div>
         <div>
-          <Sandwich />
+          <button onMouseDown={this.pressSandwich}>
+            click this button maybe
+          </button>
         </div>
       </div>
     )
