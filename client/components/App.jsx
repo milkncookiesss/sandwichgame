@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React from "react";
 import Game from "./Game.jsx";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 class App extends React.Component {
   constructor(props) {
@@ -43,20 +45,22 @@ class App extends React.Component {
       return <Register />
     } else {
       return (
-      <div>
-        <form onSubmit={(e) => this.onSubmit(e)}>
-          <label>
-            username:
-            <input name="username" type="text" value={this.state.username} onChange={this.handleChange} />
-          </label>
-          <br />
-          <label>
-            password:
-            <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-          </label>
-          <button onClick={(e) => this.onSubmit(e)}>click this</button>
-        </form>
-      </div>
+        <Form onSubmit={(e) => this.onSubmit(e)}>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>
+              username:
+            </Form.Label>
+              <Form.Control name="username" type="text" placeholder="username" value={this.state.username} onChange={this.handleChange} />
+          </Form.Group>
+
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>
+              password:
+            </Form.Label>
+              <Form.Control type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange} />
+          </Form.Group>
+          <Button variant="primary" onClick={(e) => this.onSubmit(e)}>click this</Button>
+        </Form>
       )
     }
   }

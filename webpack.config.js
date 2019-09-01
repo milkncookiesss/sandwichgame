@@ -18,18 +18,10 @@ module.exports = {
           }
         }
       },
-      // {
-      //   test: /\.es6$/, 
-      //   exclude: /node_modules/,
-      //   use: [
-      //     {
-      //       loader: 'babel-loader',
-      //       query: {
-      //         presets: ['@babel/preset-env']
-      //       }
-      //     }
-      //   ]
-      // },
+      {
+        test: /\.s?css$/i,
+        use: ['style-loader', 'css-loader']
+      }
     ]
   },
   resolve: {
