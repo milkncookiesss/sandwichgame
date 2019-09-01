@@ -8,7 +8,8 @@ class App extends React.Component {
     this.state = {
       username: '',
       password: '',
-      isLoggedIn: false
+      isLoggedIn: false,
+      registered: false
     }
   }
 
@@ -32,12 +33,6 @@ class App extends React.Component {
       [e.target.name]: e.target.value
     })
     e.preventDefault();
-  }
-
-  loginRender = () => {
-    if (!this.state.loggedIn) {
-      return 
-    }
   }
 
   render() {
