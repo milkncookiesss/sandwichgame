@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {getUserScore, getAllScores, postUserScore, postNewUser} = require('./controllers.js');
+const {getUserScore, getAllScores, postUserScore, postNewUser, getUserLogin} = require('./controllers.js');
 
 router
   .route('/api')
@@ -9,10 +9,14 @@ router
   .route('/api/user')
     .get(getUserScore)
     .post(postUserScore);
+
 router
   .route('/api/newuser')
   .post(postNewUser);
 
+router
+  .route('/api/login')
+  .post(getUserLogin);
 
 
 //export routes

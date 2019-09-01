@@ -1,8 +1,10 @@
 const { user } = require('../Database/models.js');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-//export controllers
+
+
 module.exports = {
+  //get user's score
   getUserScore: (req, res) => {
     let { username } = req.body;
     user.find({username: username})
@@ -13,8 +15,9 @@ module.exports = {
         res.status(500).send(err);
       })
   },
+  //get every users' scores
   getAllScores: (req, res) => {
-    user.find()
+    user.find().limit(10).sort({totalScore: -1})
       .then((response) => {
         res.status(200).send(response);
       })
@@ -22,16 +25,18 @@ module.exports = {
         res.status(500).send(err);
       })
   },
+  //update user's score
   postUserScore: (req, res) => {
     let { username, score } = req.body;
-    user.findOneAndUpdate({username: username}, {score: score}, (err, response) => {
+    user.findOneAndUpdate({username: username}, {totalScore: score}, (err, response) => {
       if (err) {
         return err;
       } else {
-        res.send(response);
+        res.status(200).send(response);
       }
     });
   },
+  //creating new user with encryption
   postNewUser: (req, res) => {
     const { username, password } = req.body;
     let passwordHash = bcrypt.hashSync(password, saltRounds);
@@ -57,5 +62,21 @@ module.exports = {
       .catch((err) => {
         res.status(500).send(err);
       });
+  },
+  //user log in with bcrypt comparison
+  getUserLogin: (req, res) => {
+    let { username, password } = req.body;
+    user.findOne({username: username})
+      .then((doc) => {
+        let result = bcrypt.compareSync(password, doc.password);
+        if (result) {
+          res.status(200).send(result);
+        } else {
+          res.status(409).send('wrong password');
+        }
+      })
+      .catch((err) => {
+        res.status(500).send(err);
+      })
   }
 };
