@@ -1,8 +1,9 @@
-import axios from 'axios';
+import axios from "axios";
 import React from "react";
 import Game from "./Game.jsx";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
 
 class App extends React.Component {
   constructor(props) {
@@ -45,22 +46,24 @@ class App extends React.Component {
       return <Register />
     } else {
       return (
-        <Form onSubmit={(e) => this.onSubmit(e)}>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>
-              username:
-            </Form.Label>
-              <Form.Control name="username" type="text" placeholder="username" value={this.state.username} onChange={this.handleChange} />
-          </Form.Group>
+        <Container className="d-flex justify-content-center">
+          <Form>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>
+                Username
+              </Form.Label>
+                <Form.Control name="username" type="text" placeholder="username" value={this.state.username} onChange={this.handleChange} />
+            </Form.Group>
 
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>
-              password:
-            </Form.Label>
-              <Form.Control type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange} />
-          </Form.Group>
-          <Button variant="primary" onClick={(e) => this.onSubmit(e)}>click this</Button>
-        </Form>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>
+                Password
+              </Form.Label>
+                <Form.Control type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange} />
+            </Form.Group>
+            <Button variant="primary"  onSubmit={(e) => this.onSubmit(e)} onClick={(e) => this.onSubmit(e)}>click this</Button>
+          </Form>
+        </Container>
       )
     }
   }

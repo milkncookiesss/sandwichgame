@@ -76,7 +76,7 @@ module.exports = {
         if (result) {
           res.status(200).send(result);
         } else {
-          res.status(409).send('wrong password');
+          res.status(409).send(false);
         }
       })
       .catch((err) => {
