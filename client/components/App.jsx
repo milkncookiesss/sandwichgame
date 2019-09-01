@@ -14,13 +14,19 @@ class App extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    // axios.post('localhost:3000/api/login', {
-    //   username: this.state.username,
-    //   password: this.state.password
-    // })
-    // .then((res) => {
-    //   console.log(res);
-    // })
+    axios.post('/api/login', {
+      username: this.state.username,
+      password: this.state.password
+    })
+    .then((res) => {
+      this.setState({
+        isLoggedIn: res.data
+      });
+    })
+    this.setState({
+      username: '',
+      password: ''
+    })
     console.log(this.state);
   }
 
@@ -45,7 +51,7 @@ class App extends React.Component {
     } else {
       return (
       <div>
-        <form onSubmit={(e) => this.onSubmit}>
+        <form onSubmit={(e) => this.onSubmit(e)}>
           <label>
             username:
             <input name="username" type="text" value={this.state.username} onChange={this.handleChange} />
@@ -55,7 +61,7 @@ class App extends React.Component {
             password:
             <input type="password" name="password" type="text" value={this.state.password} onChange={this.handleChange} />
           </label>
-          <button onClick={(e) => this.onSubmit}>click this</button>
+          <button onClick={(e) => this.onSubmit(e)}>click this</button>
         </form>
       </div>
       )
