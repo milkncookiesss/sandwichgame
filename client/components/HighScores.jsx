@@ -11,6 +11,15 @@ class HighScores extends React.Component {
   }
 
   componentDidMount() {
+    axios.get('/api')
+    .then((res) => {
+      this.setState({
+        highscores: res.data
+      })
+    })
+    .catch((err) => {
+      console.error(err);
+    })
     clearInterval(this.interval());
   }
 

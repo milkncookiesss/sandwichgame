@@ -25,9 +25,6 @@ class Game extends React.Component {
   }
 
   pressSandwich = () => {
-    // this.setState({
-    //   score: this.state.score + 10
-    // })
     axios.post('/api/user', {
       params: {
         username: this.state.userName,
