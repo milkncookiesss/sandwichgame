@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Game from "./Game.jsx";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -11,7 +12,8 @@ class Register extends React.Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      registered: false
     }
   }
 
@@ -24,7 +26,7 @@ class Register extends React.Component {
     )
     .then((res) => {
       this.setState({
-        isLoggedIn: res.data
+        registered: true
       });
     })
     console.log(this.state);
@@ -38,6 +40,9 @@ class Register extends React.Component {
   }
 
   render() {
+    if (this.state.registered === true) {
+      return <Game username={this.state.username}/>
+    }
     return (
       <div>
             <Container className="d-flex justify-content-center my-auto">
@@ -65,16 +70,16 @@ class Register extends React.Component {
                   </Form.Label>
                     <Form.Control type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange} />
                 </Form.Group>
-                <div className="d-flex justify-content-center">
-                <Button variant="primary" onClick={(e) => this.onSubmit(e)}>click this</Button>
-                </div>
+                <Container className="d-flex justify-content-center">
+                <Button variant="primary" className="some-pad" onClick={(e) => this.onSubmit(e)}>Register</Button>
+                <Button variant="secondary" onClick={() => {this.props.register(false)}}>Login?</Button>
+                </Container>
               </Form>
             </Col>
           </Row>
         </Container>
-        <div>
-          <p> register? </p>
-        </div>
+        {/* <Container className="d-flex justify-content-center">
+        </Container> */}
       </div>
     )
   }

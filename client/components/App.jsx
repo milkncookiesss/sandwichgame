@@ -20,10 +20,10 @@ class App extends React.Component {
     }
   }
 
-  register = (e) => {
-    e.preventDefault();
+  register = (bool) => {
+    console.log('what do i get here ', bool)
     this.setState({
-      registered: !this.state.registered
+      registered: bool
     })
   }
 
@@ -54,7 +54,7 @@ class App extends React.Component {
     if (loggedin === true) {
       return <Game username={this.state.username}/>
     } else if (this.state.registered === true) {
-      return <Register />
+      return <Register register={this.register} isLoggedIn={this.state.isLoggedIn}/>
     } else {
       return (
         <div>
@@ -85,7 +85,7 @@ class App extends React.Component {
                 </Form.Group>
                 <Container className="d-flex justify-content-center">
                 <Button variant="primary" className="some-pad" onClick={(e) => this.onSubmit(e)}>Login</Button>
-                <Button variant="secondary" onClick={(e) => {this.register(e)}}>Register?</Button>
+                <Button variant="secondary" onClick={() => {this.register(true)}}>Register?</Button>
                 </Container>
               </Form>
             </Col>
