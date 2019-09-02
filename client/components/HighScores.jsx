@@ -44,12 +44,12 @@ class HighScores extends React.Component {
   render() {
     return(
       <div>
-        <Container className="d-flex flex-row-reverse">
+        <Container className="d-flex">
           <h1>
             High Scores
           </h1>
         </Container>
-        <Container className="d-flex flex-row-reverse">
+        <Container className="d-flex">
           <Row>
             <Col>
               <div>

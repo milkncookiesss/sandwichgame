@@ -10,7 +10,7 @@ module.exports = {
     // console.log('the user ', req.query);
     user.findOne({username: username})
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         res.status(200).send(response);
       })
       .catch((err) => {
@@ -21,7 +21,7 @@ module.exports = {
   getAllScores: (req, res) => {
     user.find().limit(10).sort({totalScore: -1})
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         res.status(200).send(response);
       })
       .catch((err) => {
@@ -31,7 +31,7 @@ module.exports = {
   //update user's score
   postUserScore: (req, res) => {
     let { username, score } = req.body.params;
-    console.log('the stuff ', req);
+    // console.log('the stuff ', req);
     user.findOneAndUpdate({username: username}, {totalScore: score}, (err, response) => {
       if (err) {
         return err;
