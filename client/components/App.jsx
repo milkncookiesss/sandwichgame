@@ -1,11 +1,13 @@
 import axios from "axios";
 import React from "react";
 import Game from "./Game.jsx";
+import Register from "./Register.jsx";
 import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import "../styles/styles.css";
 
 class App extends React.Component {
   constructor(props) {
@@ -16,6 +18,13 @@ class App extends React.Component {
       isLoggedIn: false,
       registered: false
     }
+  }
+
+  register = (e) => {
+    e.preventDefault();
+    this.setState({
+      registered: !this.state.registered
+    })
   }
 
   onSubmit = (e) => {
@@ -74,16 +83,16 @@ class App extends React.Component {
                   </Form.Label>
                     <Form.Control type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange} />
                 </Form.Group>
-                <div className="d-flex justify-content-center">
-                <Button variant="primary" onClick={(e) => this.onSubmit(e)}>click this</Button>
-                </div>
+                <Container className="d-flex justify-content-center">
+                <Button variant="primary" className="some-pad" onClick={(e) => this.onSubmit(e)}>Login</Button>
+                <Button variant="secondary" onClick={(e) => {this.register(e)}}>Register?</Button>
+                </Container>
               </Form>
             </Col>
           </Row>
         </Container>
-        <div>
-          <p> register? </p>
-        </div>
+        {/* <Container className="d-flex justify-content-center">
+        </Container> */}
       </div>
       )
     }
