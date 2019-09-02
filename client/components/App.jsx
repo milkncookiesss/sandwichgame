@@ -5,7 +5,6 @@ import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Jumbotron from "react-bootstrap/Jumbotron"
 import Container from "react-bootstrap/Container";
 
 class App extends React.Component {
@@ -50,37 +49,38 @@ class App extends React.Component {
     } else {
       return (
         <div>
-            <Jumbotron>
+            <Container className="d-flex justify-content-center my-auto">
               <Row>
-                <Col xs>
-              <h1>
-              Sandwich Gamez
-              </h1>
+                <Col>
+                  <h1>
+                  Sandwich Gamez
+                  </h1>
                 </Col>
               </Row>
-            </Jumbotron>
-          <ul>
-          <Col className="col-md-4 col-md-offset-4">
+            </Container>
         <Container className="d-flex justify-content-center my-auto align-middle">
-          <Form>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>
-                Username
-              </Form.Label>
-                <Form.Control name="username" type="text" placeholder="username" value={this.state.username} onChange={this.handleChange} />
-            </Form.Group>
-
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label>
-                Password
-              </Form.Label>
-                <Form.Control type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange} />
-            </Form.Group>
-            <Button variant="primary"  onSubmit={(e) => this.onSubmit(e)} onClick={(e) => this.onSubmit(e)}>click this</Button>
-          </Form>
+          <Row>
+            <Col>
+              <Form onSubmit={(e) => this.onSubmit(e)}>
+                <Form.Group controlId="formBasicEmail">
+                  <Form.Label>
+                    Username
+                  </Form.Label>
+                    <Form.Control name="username" type="text" placeholder="username" value={this.state.username} onChange={this.handleChange} />
+                </Form.Group>
+                <Form.Group controlId="formBasicPassword">
+                  <Form.Label>
+                    Password
+                  </Form.Label>
+                    <Form.Control type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange} />
+                </Form.Group>
+                <div className="d-flex justify-content-center">
+                <Button variant="primary" onClick={(e) => this.onSubmit(e)}>click this</Button>
+                </div>
+              </Form>
+            </Col>
+          </Row>
         </Container>
-          </Col>
-          </ul>
         {/* // <Container className="d-flex justify-content-center align-middle my-auto">
         //   <Row>
         //       <Col md="auto">
