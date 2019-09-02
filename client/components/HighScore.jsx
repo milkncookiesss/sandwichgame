@@ -5,9 +5,8 @@ const HighScore = (props) => {
   return (
     <div>
       <h1>
-      {props.username}
+      #{props.id + 1} {props.username}
       </h1>
-
       {props.score}
     </div>
   )

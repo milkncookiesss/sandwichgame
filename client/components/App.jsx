@@ -53,7 +53,7 @@ class App extends React.Component {
               <Row>
                 <Col>
                   <h1>
-                  Sandwich Gamez
+                  Login?
                   </h1>
                 </Col>
               </Row>
@@ -81,13 +81,9 @@ class App extends React.Component {
             </Col>
           </Row>
         </Container>
-        {/* // <Container className="d-flex justify-content-center align-middle my-auto">
-        //   <Row>
-        //       <Col md="auto">
-        //       hi hi hi
-        //       </Col>
-        //   </Row>
-        // </Container> */}
+        <div>
+          <p> register? </p>
+        </div>
       </div>
       )
     }

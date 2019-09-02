@@ -35,21 +35,41 @@ class Register extends React.Component {
   render() {
     return (
       <div>
-        <h1>
-          New User Registration
-        </h1>
-        <form onSubmit={(e) => this.onSubmit(e)}>
-          <label>
-            username:
-            <input name="username" type="text" value={this.state.username} onChange={this.handleChange} />
-          </label>
-          <br />
-          <label>
-            password:
-            <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-          </label>
-          <button onClick={(e) => this.onSubmit(e)}>click this</button>
-        </form>
+            <Container className="d-flex justify-content-center my-auto">
+              <Row>
+                <Col>
+                  <h1>
+                  Register?
+                  </h1>
+                </Col>
+              </Row>
+            </Container>
+        <Container className="d-flex justify-content-center my-auto align-middle">
+          <Row>
+            <Col>
+              <Form onSubmit={(e) => this.onSubmit(e)}>
+                <Form.Group controlId="formBasicEmail">
+                  <Form.Label>
+                    Username
+                  </Form.Label>
+                    <Form.Control name="username" type="text" placeholder="username" value={this.state.username} onChange={this.handleChange} />
+                </Form.Group>
+                <Form.Group controlId="formBasicPassword">
+                  <Form.Label>
+                    Password
+                  </Form.Label>
+                    <Form.Control type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange} />
+                </Form.Group>
+                <div className="d-flex justify-content-center">
+                <Button variant="primary" onClick={(e) => this.onSubmit(e)}>click this</Button>
+                </div>
+              </Form>
+            </Col>
+          </Row>
+        </Container>
+        <div>
+          <p> register? </p>
+        </div>
       </div>
     )
   }
