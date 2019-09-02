@@ -60,7 +60,7 @@ module.exports = {
             res.status(500).send(err);
           })
         } else {
-          res.status(302).send('user exists');
+          res.status(302).send(false);
         }
       })
       .catch((err) => {
@@ -76,7 +76,7 @@ module.exports = {
         if (result) {
           res.status(200).send(result);
         } else {
-          res.status(409).send(false);
+          res.status(409).send(result);
         }
       })
       .catch((err) => {

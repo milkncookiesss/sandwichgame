@@ -1,11 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import Game from "./Game.jsx";
-import Container from "react-bootstrap/Container";
+import "../styles/styles.css";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
 
 class Register extends React.Component {
   constructor(props) {
@@ -13,7 +14,18 @@ class Register extends React.Component {
     this.state = {
       username: '',
       password: '',
-      registered: false
+      registered: false,
+      error: false
+    }
+  }
+
+  error = () => {
+    if (this.state.error) {
+      return( 
+        <div>
+          hey this user exists
+        </div>
+      )
     }
   }
 
@@ -25,11 +37,18 @@ class Register extends React.Component {
       }
     )
     .then((res) => {
+      console.log(res.data);
       this.setState({
         registered: true
       });
     })
-    console.log(this.state);
+    .catch((err) => {
+      if (err) {
+        this.setState({
+          error: true
+        })
+      }
+    })
   }
 
   handleChange = (e) => {
@@ -74,6 +93,7 @@ class Register extends React.Component {
                 <Button variant="primary" className="some-pad" onClick={(e) => this.onSubmit(e)}>Register</Button>
                 <Button variant="secondary" onClick={() => {this.props.register(false)}}>Login?</Button>
                 </Container>
+                {this.error()}
               </Form>
             </Col>
           </Row>

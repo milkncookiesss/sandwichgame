@@ -1,13 +1,13 @@
 import axios from "axios";
 import React from "react";
 import Game from "./Game.jsx";
-import Register from "./Register.jsx";
+import "../styles/styles.css";
 import Col from "react-bootstrap/Col"
+import Register from "./Register.jsx";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import "../styles/styles.css";
 
 class App extends React.Component {
   constructor(props) {
