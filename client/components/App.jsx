@@ -16,13 +16,25 @@ class App extends React.Component {
       username: '',
       password: '',
       isLoggedIn: false,
-      registered: false
+      registered: false,
+      error: false
+    }
+  }
+
+  error = () => {
+    if (this.state.error) {
+      return (
+        <div>
+          your username or password is wrong
+        </div>
+      )
     }
   }
 
   register = (bool) => {
     console.log('what do i get here ', bool)
     this.setState({
+      error: false,
       registered: bool
     })
   }
@@ -38,6 +50,13 @@ class App extends React.Component {
       this.setState({
         isLoggedIn: res.data
       });
+    })
+    .catch((err) => {
+      if (err) {
+        this.setState({
+          error: true
+        })
+      }
     })
     console.log(this.state);
   }
@@ -87,6 +106,7 @@ class App extends React.Component {
                 <Button variant="primary" className="some-pad" onClick={(e) => this.onSubmit(e)}>Login</Button>
                 <Button variant="secondary" onClick={() => {this.register(true)}}>Register?</Button>
                 </Container>
+                {this.error()}
               </Form>
             </Col>
           </Row>

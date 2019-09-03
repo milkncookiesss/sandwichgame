@@ -15,7 +15,7 @@ class Register extends React.Component {
       username: '',
       password: '',
       registered: false,
-      error: false
+      validated: false
     }
   }
 
@@ -31,6 +31,9 @@ class Register extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault();
+    // if (this.state.username === '' || this.state.password === '') {
+
+    // }
     axios.post('/api/newuser', {
         username: this.state.username,
         password: this.state.password
@@ -39,7 +42,7 @@ class Register extends React.Component {
     .then((res) => {
       console.log(res.data);
       this.setState({
-        registered: true
+        validated: true
       });
     })
     .catch((err) => {
@@ -81,13 +84,15 @@ class Register extends React.Component {
                   <Form.Label>
                     Username
                   </Form.Label>
-                    <Form.Control name="username" type="text" placeholder="username" value={this.state.username} onChange={this.handleChange} />
+                    <Form.Control name="username" type="text" placeholder="username" required value={this.state.username} onChange={this.handleChange} />
+                    <Form.Control.Feedback type="invalid">Please enter an username</Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group controlId="formBasicPassword">
                   <Form.Label>
                     Password
                   </Form.Label>
-                    <Form.Control type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange} />
+                    <Form.Control type="password" name="password" placeholder="password" required value={this.state.password} onChange={this.handleChange} />
+                    <Form.Control.Feedback type="invalid">Please enter a password</Form.Control.Feedback>
                 </Form.Group>
                 <Container className="d-flex justify-content-center">
                 <Button variant="primary" className="some-pad" onClick={(e) => this.onSubmit(e)}>Register</Button>
