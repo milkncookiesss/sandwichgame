@@ -20,7 +20,14 @@ class Register extends React.Component {
   }
 
   error = () => {
-    if (this.state.error) {
+    if (this.state.username === "" || this.state.password === "") {
+      return (
+        <div>
+          fill out the fields
+        </div>
+      )
+    }
+    if (this.state.validated) {
       return( 
         <div>
           hey this user exists
@@ -31,8 +38,11 @@ class Register extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    // if (this.state.username === '' || this.state.password === '') {
-
+    // const form = e.currentTarget;
+    // console.log('the current target ', form);
+    // if (form.checkValidity() === false) {
+    //   e.preventDefault();
+    //   e.stopPropagation();
     // }
     axios.post('/api/newuser', {
         username: this.state.username,
@@ -79,7 +89,7 @@ class Register extends React.Component {
         <Container className="d-flex justify-content-center my-auto align-middle">
           <Row>
             <Col>
-              <Form onSubmit={(e) => this.onSubmit(e)}>
+              <Form noValidate validated={this.state.validated} onSubmit={(e) => this.onSubmit(e)}>
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label>
                     Username
@@ -95,7 +105,7 @@ class Register extends React.Component {
                     <Form.Control.Feedback type="invalid">Please enter a password</Form.Control.Feedback>
                 </Form.Group>
                 <Container className="d-flex justify-content-center">
-                <Button variant="primary" className="some-pad" onClick={(e) => this.onSubmit(e)}>Register</Button>
+                <Button variant="primary" className="some-pad" type="submit" onClick={(e) => this.onSubmit(e)}>Register</Button>
                 <Button variant="secondary" onClick={() => {this.props.register(false)}}>Login?</Button>
                 </Container>
                 {this.error()}
