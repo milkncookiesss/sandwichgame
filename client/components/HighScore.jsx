@@ -1,4 +1,5 @@
 import React from 'react';
+import "../styles/styles.css";
 import Table from "react-bootstrap/Table";
 
 const HighScore = (props) => {

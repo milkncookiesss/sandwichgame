@@ -49,13 +49,12 @@ class HighScores extends React.Component {
           <h1>
             High Scores
           </h1>
-          <Container>
             <Table striped bordered hover variant="dark" responsive size="sm">
               <thread>
                 <tr>
-                  <th>#</th>
-                  <th>Username</th>
-                  <th>Scores</th>
+                  <th className="col-sm-4">#</th>
+                  <th className="col-sm-4">Username</th>
+                  <th className="col-sm-4">Scores</th>
                 </tr>
               </thread>
                 <tbody>
@@ -64,7 +63,6 @@ class HighScores extends React.Component {
                   })}
                 </tbody>
               </Table>
-          </Container>
         </Container>
     )
   }
