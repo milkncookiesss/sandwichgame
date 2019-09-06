@@ -1,10 +1,11 @@
 import React from 'react';
 import axios from 'axios';
-import HighScore from './HighScore.jsx';
-import Container from "react-bootstrap/Container";
+import "../styles/styles.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import "../styles/styles.css";
+import HighScore from './HighScore.jsx';
+import Table from "react-bootstrap/Table";
+import Container from "react-bootstrap/Container";
 
 class HighScores extends React.Component {
   constructor(props) {
@@ -44,24 +45,27 @@ class HighScores extends React.Component {
 
   render() {
     return(
-      <div>
         <Container className="d-flex">
           <h1>
             High Scores
           </h1>
+          <Container>
+            <Table striped bordered hover variant="dark" responsive size="sm">
+              <thread>
+                <tr>
+                  <th>#</th>
+                  <th>Username</th>
+                  <th>Scores</th>
+                </tr>
+              </thread>
+                <tbody>
+                  {this.state.highscores.map((score, index) => {
+                    return <tr><HighScore username={score.username} score={score.totalScore} key={index} id={index}/></tr>
+                  })}
+                </tbody>
+              </Table>
+          </Container>
         </Container>
-        <Container className="d-flex">
-          <Row>
-            <Col>
-              <div>
-                {this.state.highscores.map((score, index) => {
-                  return <HighScore username={score.username} score={score.totalScore} key={index} id={index}/>
-                })}
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </div>
     )
   }
 }
