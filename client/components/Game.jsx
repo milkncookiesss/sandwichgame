@@ -1,5 +1,6 @@
 import HighScores from "./HighScores.jsx";
 import Sandwich from "./SandwichComponent.jsx";
+import Container from "react-bootstrap/Container";
 import React from "react";
 import axios from "axios";
 
@@ -45,12 +46,16 @@ class Game extends React.Component {
           {this.state.score}
         </div>
         <div>
-          <HighScores />
+          <Container>
+            <button onMouseDown={this.pressSandwich}>
+              click this button maybe
+            </button>
+          </Container>
         </div>
         <div>
-          <button onMouseDown={this.pressSandwich}>
-            click this button maybe
-          </button>
+          <Container>
+            <HighScores />
+          </Container>
         </div>
       </div>
     )

@@ -45,25 +45,27 @@ class HighScores extends React.Component {
 
   render() {
     return(
-        <Container className="d-flex">
-          <h1>
-            High Scores
-          </h1>
-            <Table striped bordered hover variant="dark" responsive size="sm">
-              <thread>
+      <div>
+        <h1>
+          High Scores
+        </h1>
+        <Col xs={4} className="d-flex">
+            <Table bordered hover variant="dark" size="sm">
+              <thead>
                 <tr>
-                  <th className="col-sm-4">#</th>
-                  <th className="col-sm-4">Username</th>
-                  <th className="col-sm-4">Scores</th>
+                  <th>#</th>
+                  <th>Username</th>
+                  <th>Scores</th>
                 </tr>
-              </thread>
+              </thead>
                 <tbody>
                   {this.state.highscores.map((score, index) => {
-                    return <tr><HighScore username={score.username} score={score.totalScore} key={index} id={index}/></tr>
+                    return<HighScore username={score.username} score={score.totalScore} key={index} id={index}/>
                   })}
                 </tbody>
               </Table>
-        </Container>
+        </Col>
+      </div>
     )
   }
 }
