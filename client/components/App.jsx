@@ -58,7 +58,7 @@ class App extends React.Component {
         })
       }
     })
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   handleChange = (e) => {
@@ -71,7 +71,7 @@ class App extends React.Component {
   render() {
     let loggedin = this.state.isLoggedIn;
     if (loggedin === true) {
-      return <Game username={this.state.username}/>
+      return <Container><Game username={this.state.username}/></Container>
     } else if (this.state.registered === true) {
       return <Register register={this.register} isLoggedIn={this.state.isLoggedIn}/>
     } else {

@@ -41,18 +41,18 @@ class Game extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <div className="d-flex">
+        <div className="p-2 flex-fill">
           {this.state.score}
         </div>
-        <div>
+        <div className="p-2 flex-fill align-self-center">
           <Container>
             <button onMouseDown={this.pressSandwich}>
               click this button maybe
             </button>
           </Container>
         </div>
-        <div>
+        <div className="p-2 flex-fill">
           <Container>
             <HighScores />
           </Container>

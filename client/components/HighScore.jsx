@@ -3,7 +3,7 @@ import "../styles/styles.css";
 import Table from "react-bootstrap/Table";
 
 const HighScore = (props) => {
-  console.log('the props ', props);
+  // console.log('the props ', props);
   return (
     <tr>
       <td>
