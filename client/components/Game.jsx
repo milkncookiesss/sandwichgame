@@ -47,9 +47,10 @@ class Game extends React.Component {
         </div>
         <div className="p-2 flex-fill align-self-center">
           <Container>
-            <button onMouseDown={this.pressSandwich}>
+            <img src="http://pngimg.com/uploads/burger_sandwich/burger_sandwich_PNG4120.png" width="50%" height="50%" onMouseDown={this.pressSandwich}/>
+            {/* <button >
               click this button maybe
-            </button>
+            </button> */}
           </Container>
         </div>
         <div className="p-2 flex-fill">
