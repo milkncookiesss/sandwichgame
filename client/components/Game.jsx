@@ -25,7 +25,21 @@ class Game extends React.Component {
     })
   }
 
+  updateScoreInterval = () => {
+    setInterval(() => {
+      axios.post('/api/user', {
+        params: {
+          username: this.state.userName,
+          score: this.state.score
+        }
+      })
+    }, 5000)
+  }
+
   pressSandwich = () => {
+    this.setState({
+      score: this.state.score + 10
+    })
     axios.post('/api/user', {
       params: {
         username: this.state.userName,
