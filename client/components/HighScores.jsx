@@ -40,7 +40,7 @@ class HighScores extends React.Component {
     .catch((err) => {
       console.error(err);
     })
-    }, 5000)
+    }, 3000)
   }
 
   render() {

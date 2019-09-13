@@ -23,6 +23,10 @@ class Game extends React.Component {
         score: res.data.totalScore
       })
     })
+    .catch((err) => {
+      console.error(err);
+    })
+    clearInterval(this.updateScoreInterval());
   }
 
   updateScoreInterval = () => {
@@ -33,35 +37,35 @@ class Game extends React.Component {
           score: this.state.score
         }
       })
-    }, 5000)
+    }, 3500)
   }
 
   pressSandwich = () => {
     this.setState({
       score: this.state.score + 10
     })
-    axios.post('/api/user', {
-      params: {
-        username: this.state.userName,
-        score: this.state.score + 10
-      }
-    })
-    .then((res) => {
-      this.setState({
-        score: res.data.totalScore
-      })
-    })
+    // axios.post('/api/user', {
+    //   params: {
+    //     username: this.state.userName,
+    //     score: this.state.score + 10
+    //   }
+    // })
+    // .then((res) => {
+    //   this.setState({
+    //     score: res.data.totalScore
+    //   })
+    // })
   }
 
   render() {
     return (
       <div className="d-flex">
-        <div className="p-2 flex-fill">
-          {this.state.score}
-        </div>
+        <h1 className="p-2 flex-fill">
+          Score: {this.state.score}
+        </h1>
         <div className="p-2 flex-fill align-self-center">
           <Container>
-            <img src="http://pngimg.com/uploads/burger_sandwich/burger_sandwich_PNG4120.png" width="50%" height="50%" onMouseDown={this.pressSandwich}/>
+            <img src="http://pngimg.com/uploads/burger_sandwich/burger_sandwich_PNG4120.png" width="50%" height="50%" onMouseDown={this.pressSandwich} />
             {/* <button >
               click this button maybe
             </button> */}
