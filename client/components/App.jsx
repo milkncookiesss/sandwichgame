@@ -58,7 +58,6 @@ class App extends React.Component {
         })
       }
     })
-    // console.log(this.state);
   }
 
   handleChange = (e) => {
@@ -111,8 +110,6 @@ class App extends React.Component {
             </Col>
           </Row>
         </Container>
-        {/* <Container className="d-flex justify-content-center">
-        </Container> */}
       </div>
       )
     }
