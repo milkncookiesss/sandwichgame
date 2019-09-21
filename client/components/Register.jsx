@@ -38,22 +38,19 @@ class Register extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    // const form = e.currentTarget;
-    // console.log('the current target ', form);
-    // if (form.checkValidity() === false) {
-    //   e.preventDefault();
-    //   e.stopPropagation();
-    // }
     axios.post('/api/newuser', {
         username: this.state.username,
         password: this.state.password
       }
     )
     .then((res) => {
-      console.log(res.data);
       this.setState({
-        validated: true
+        validated: true,
       });
+      if (this.state.validated === true) {
+        this.props.isLoggedIn = true;
+        console.log('hey this person is validated');
+      }
     })
     .catch((err) => {
       if (err) {
@@ -72,7 +69,7 @@ class Register extends React.Component {
   }
 
   render() {
-    if (this.state.registered === true) {
+    if (this.state.validated === true) {
       return <Game username={this.state.username}/>
     }
     return (
