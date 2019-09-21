@@ -1,8 +1,9 @@
+import React from "react";
+import axios from "axios";
+import Image from "react-bootstrap/Image";
 import HighScores from "./HighScores.jsx";
 import Sandwich from "./SandwichComponent.jsx";
 import Container from "react-bootstrap/Container";
-import React from "react";
-import axios from "axios";
 
 class Game extends React.Component {
   constructor(props) {
@@ -54,8 +55,9 @@ class Game extends React.Component {
         </h1>
         <div className="p-2 flex-fill align-self-center">
           <Container>
-            <img src="http://pngimg.com/uploads/burger_sandwich/burger_sandwich_PNG4120.png" width="50%" height="50%" onMouseDown={this.pressSandwich} />
+            <Image src="http://pngimg.com/uploads/burger_sandwich/burger_sandwich_PNG4120.png" width="50%" height="50%" onMouseDown={this.pressSandwich} fluid/>
           </Container>
+          <p>Click Me</p>
         </div>
         <div className="p-2 flex-fill">
           <Container>
