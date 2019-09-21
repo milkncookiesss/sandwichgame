@@ -14,7 +14,6 @@ class Register extends React.Component {
     this.state = {
       username: '',
       password: '',
-      registered: false,
       validated: false
     }
   }
@@ -47,10 +46,6 @@ class Register extends React.Component {
       this.setState({
         validated: true,
       });
-      if (this.state.validated === true) {
-        this.props.isLoggedIn = true;
-        console.log('hey this person is validated');
-      }
     })
     .catch((err) => {
       if (err) {
