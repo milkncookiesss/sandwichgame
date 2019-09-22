@@ -1,5 +1,7 @@
 import React from "react";
 import axios from "axios";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import HighScores from "./HighScores.jsx";
 import Sandwich from "./SandwichComponent.jsx";
@@ -54,10 +56,14 @@ class Game extends React.Component {
           Score: {this.state.score}
         </h1>
         <div className="p-2 flex-fill align-self-center">
-          <Container>
+          {/* <Container> */}
+          <Row>
+            <Col md={{ offset: 3 }}>
+            <h2>Click Me</h2>
             <Image src="http://pngimg.com/uploads/burger_sandwich/burger_sandwich_PNG4120.png" width="50%" height="50%" onMouseDown={this.pressSandwich} fluid/>
-          </Container>
-          <p>Click Me</p>
+            </Col>
+          </Row>
+          {/* </Container> */}
         </div>
         <div className="p-2 flex-fill">
           <Container>

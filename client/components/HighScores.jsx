@@ -46,10 +46,11 @@ class HighScores extends React.Component {
   render() {
     return(
       <div>
-        <h1>
-          High Scores
-        </h1>
-        <Col xs={4} className="d-flex">
+        <Row>
+          <h1>
+            High Scores:
+          </h1>
+        {/* <Col xs={4} className="d-flex"> */}
             <Table bordered hover variant="dark" size="sm">
               <thead>
                 <tr>
@@ -64,7 +65,8 @@ class HighScores extends React.Component {
                   })}
                 </tbody>
               </Table>
-        </Col>
+        {/* </Col> */}
+                    </Row>
       </div>
     )
   }
