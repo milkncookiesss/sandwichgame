@@ -102,7 +102,7 @@ class App extends React.Component {
                     <Form.Control type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange} />
                 </Form.Group>
                 <Container className="d-flex justify-content-center">
-                <Button variant="primary" className="some-pad" onClick={(e) => this.onSubmit(e)}>Login</Button>
+                <Button variant="primary" className="some-pad" type="submit" onClick={(e) => this.onSubmit(e)}>Login</Button>
                 <Button variant="secondary" onClick={() => {this.register(true)}}>Register?</Button>
                 </Container>
                 {this.error()}
