@@ -13,3 +13,12 @@
 .table-size {
   width: auto;
 }
+
+.float-text {
+  display: none;
+}
+
+.float-text:active {
+  display: block;
+  -webkit-animation-duration: 1s;animation-duration: 1s;
+}

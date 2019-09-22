@@ -16,6 +16,12 @@ class Game extends React.Component {
     }
   }
 
+  /*
+  add bonus round function
+  figure out media queries
+
+  */
+
   componentDidMount() {
     this.setState({
       userName: this.props.username
@@ -58,9 +64,14 @@ class Game extends React.Component {
         <div className="p-2 flex-fill align-self-center">
           {/* <Container> */}
           <Row>
-            <Col md={{ offset: 3 }}>
-            <h2>Click Me</h2>
-            <Image src="http://pngimg.com/uploads/burger_sandwich/burger_sandwich_PNG4120.png" width="50%" height="50%" onMouseDown={this.pressSandwich} fluid/>
+            <Col md={{ span: 6, offset: 3}}>
+              <h2>Click Me</h2>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={{ span: 6, offset: 3 }}>
+              <p className="float-text">+10</p>
+            <Image src="http://pngimg.com/uploads/burger_sandwich/burger_sandwich_PNG4120.png" width="75%" height="75%" onMouseDown={this.pressSandwich} fluid/>
             </Col>
           </Row>
           {/* </Container> */}
