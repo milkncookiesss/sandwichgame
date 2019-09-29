@@ -57,22 +57,24 @@ class Game extends React.Component {
 
   render() {
     return (
+      <Container>
       <Row>
         <Col>
-          <h1 className="p-2 flex-fill">
+          <h1>
             Score: {this.state.score}
           </h1>
         </Col>
-        <Col xs={6}>
+        <Col md={4}>
           <div>
-          <h1>Click dis shit</h1>
-          <Image src="http://pngimg.com/uploads/burger_sandwich/burger_sandwich_PNG4120.png" width="100%" height="100%" onMouseDown={this.pressSandwich} fluid/>
+            <Image src="http://pngimg.com/uploads/burger_sandwich/burger_sandwich_PNG4120.png" width="100%" height="100%" onMouseDown={this.pressSandwich} fluid/>
+            <h1>Click dis shit</h1>
           </div>
         </Col>
         <Col>
           <HighScores/>
         </Col>
       </Row>
+      </Container>
       // <div className="d-flex">
       //   <h1 className="p-2 flex-fill">
       //     Score: {this.state.score}

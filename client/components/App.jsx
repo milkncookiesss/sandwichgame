@@ -70,7 +70,7 @@ class App extends React.Component {
   render() {
     let loggedin = this.state.isLoggedIn;
     if (loggedin === true) {
-      return <Container><Game username={this.state.username}/></Container>
+      return <Game username={this.state.username}/>
     } else if (this.state.registered === true) {
       return <Register register={this.register} />
     } else {
