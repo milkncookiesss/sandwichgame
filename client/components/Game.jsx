@@ -57,31 +57,44 @@ class Game extends React.Component {
 
   render() {
     return (
-      <div className="d-flex">
-        <h1 className="p-2 flex-fill">
-          Score: {this.state.score}
-        </h1>
-        <div className="p-2 flex-fill align-self-center">
-          {/* <Container> */}
-          <Row>
-            <Col md={{ span: 6, offset: 3}}>
-              <h2>Click Me</h2>
-            </Col>
-          </Row>
-          <Row>
-            <Col md={{ span: 6, offset: 3 }}>
-              <p className="float-text">+10</p>
-            <Image src="http://pngimg.com/uploads/burger_sandwich/burger_sandwich_PNG4120.png" width="75%" height="75%" onMouseDown={this.pressSandwich} fluid/>
-            </Col>
-          </Row>
-          {/* </Container> */}
-        </div>
-        <div className="p-2 flex-fill">
-          <Container>
-            <HighScores />
-          </Container>
-        </div>
-      </div>
+      <Row>
+        <Col>
+          <h1 className="p-2 flex-fill">
+            Score: {this.state.score}
+          </h1>
+        </Col>
+        <Col xs={6}>
+          <div>
+          <h1>Click dis shit</h1>
+          <Image src="http://pngimg.com/uploads/burger_sandwich/burger_sandwich_PNG4120.png" width="100%" height="100%" onMouseDown={this.pressSandwich} fluid/>
+          </div>
+        </Col>
+        <Col>
+          <HighScores/>
+        </Col>
+      </Row>
+      // <div className="d-flex">
+      //   <h1 className="p-2 flex-fill">
+      //     Score: {this.state.score}
+      //   </h1>
+      //   <div className="p-2 flex-fill align-self-center">
+      //     <Row>
+      //       <Col md={{ span: 6, offset: 3}}>
+      //         <h2>Click Me</h2>
+      //       </Col>
+      //     </Row>
+      //     <Row>
+      //       <Col md={{ span: 6, offset: 3 }}>
+      //         <p className="float-text">+10</p>
+      //       </Col>
+      //     </Row>
+      //   </div>
+      //   <div className="p-2 flex-fill">
+      //     <Container>
+      //       <HighScores />
+      //     </Container>
+      //   </div>
+      // </div>
     )
   }
 }

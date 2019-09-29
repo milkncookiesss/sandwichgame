@@ -46,7 +46,7 @@ class HighScores extends React.Component {
   render() {
     return(
       <div>
-        <Row>
+        {/* <Row> */}
           <h1>
             High Scores:
           </h1>
@@ -66,7 +66,7 @@ class HighScores extends React.Component {
                 </tbody>
               </Table>
         {/* </Col> */}
-                    </Row>
+                    {/* </Row> */}
       </div>
     )
   }
